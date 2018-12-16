@@ -23,6 +23,8 @@ public class Tasktype implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(generator = "tasktype_generator")
+    @SequenceGenerator(name="tasktype_generator", sequenceName = "tasktype_seq", allocationSize=1)
     @Basic(optional = false)
     @NotNull
     @Column(name = "tasktypeid")

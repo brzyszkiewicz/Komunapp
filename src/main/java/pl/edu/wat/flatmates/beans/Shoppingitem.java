@@ -21,6 +21,8 @@ public class Shoppingitem implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(generator = "item_generator")
+    @SequenceGenerator(name="item_generator", sequenceName = "item_seq", allocationSize=1)
     @Basic(optional = false)
     @NotNull
     @Column(name = "shoppingitemid")

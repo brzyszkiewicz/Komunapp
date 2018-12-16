@@ -22,6 +22,8 @@ public class Task implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(generator = "task_generator")
+    @SequenceGenerator(name="task_generator", sequenceName = "task_seq", allocationSize=1)
     @Basic(optional = false)
     @NotNull
     @Column(name = "taskid")

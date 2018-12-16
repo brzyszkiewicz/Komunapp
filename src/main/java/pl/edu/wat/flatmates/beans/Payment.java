@@ -21,6 +21,8 @@ public class Payment implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(generator = "payment_generator")
+    @SequenceGenerator(name="payment_generator", sequenceName = "payment_seq", allocationSize=1)
     @Basic(optional = false)
     @NotNull
     @Column(name = "paymentid")

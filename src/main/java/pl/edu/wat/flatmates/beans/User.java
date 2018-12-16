@@ -16,7 +16,7 @@ import java.util.Date;
 
 
 @Entity
-@Table(name = "user")
+@Table(name = "[user]")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u")})
@@ -24,6 +24,8 @@ public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(generator = "user_generator")
+    @SequenceGenerator(name="user_generator", sequenceName = "user_seq", allocationSize=1)
     @Basic(optional = false)
     @NotNull
     @Column(name = "userid")

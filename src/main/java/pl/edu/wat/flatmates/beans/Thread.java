@@ -24,6 +24,8 @@ public class Thread implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(generator = "thread_generator")
+    @SequenceGenerator(name="thread_generator", sequenceName = "thread_seq", allocationSize=1)
     @Basic(optional = false)
     @NotNull
     @Column(name = "threadid")

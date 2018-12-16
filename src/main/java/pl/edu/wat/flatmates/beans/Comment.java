@@ -22,6 +22,8 @@ public class Comment implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(generator = "comment_generator")
+    @SequenceGenerator(name="comment_generator", sequenceName = "comment_seq", allocationSize=1)
     @Basic(optional = false)
     @NotNull
     @Column(name = "commentid")

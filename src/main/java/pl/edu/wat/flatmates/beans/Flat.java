@@ -24,6 +24,8 @@ public class Flat implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(generator = "flat_generator")
+    @SequenceGenerator(name="flat_generator", sequenceName = "flat_seq", allocationSize=1)
     @Basic(optional = false)
     @NotNull
     @Column(name = "flatid")
