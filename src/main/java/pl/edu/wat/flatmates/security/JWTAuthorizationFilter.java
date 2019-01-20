@@ -54,4 +54,8 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
         }
         return null;
     }
+
+    public static String getUsername(){
+        return SecurityContextHolder.getContext().getAuthentication().getName();
+    }
 }

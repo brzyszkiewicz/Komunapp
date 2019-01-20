@@ -43,7 +43,7 @@ public class User implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 30)
-    @Column(name = "login")
+    @Column(name = "login", unique = true)
     private String login;
     @Basic(optional = false)
     @NotNull
@@ -54,7 +54,7 @@ public class User implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 256)
-    @Column(name = "email")
+    @Column(name = "email", unique = true)
     private String email;
     @Column(name = "birthday")
     @Temporal(TemporalType.DATE)
