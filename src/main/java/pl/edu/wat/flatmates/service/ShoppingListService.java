@@ -2,12 +2,12 @@ package pl.edu.wat.flatmates.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 import pl.edu.wat.flatmates.beans.Shoppinglist;
-import pl.edu.wat.flatmates.dto.ShoppingListDto;
 import pl.edu.wat.flatmates.repository.ShoppingListRepository;
+import pl.edu.wat.flatmates.utils.UserUtils;
 
-import java.util.Calendar;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class ShoppingListService {
@@ -15,18 +15,17 @@ public class ShoppingListService {
     @Autowired
     ShoppingListRepository listRepository;
 
-    public Integer createShoppingList(ShoppingListDto list){
-        Shoppinglist result = new Shoppinglist();
+    @Autowired
+    UserUtils userUtils;
 
-        result.setDescription(list.getDescription());
+    public List<Shoppinglist> getFlatShoppingLists(){
+        List<Shoppinglist> lists = new ArrayList<>();
+        Integer flatId;
 
-        System.out.println(list.getDescription());
+        flatId = userUtils.getCurrentUser().getFlatid().getFlatid();
 
-        result.setCreatedate(Calendar.getInstance().getTime());
+        lists = listRepository.findByFlatid(flatId);
 
-        result = listRepository.save(result);
-
-        return result.getShoppinglistid();
-
+        return lists;
     }
 }
