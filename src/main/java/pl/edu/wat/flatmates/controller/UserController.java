@@ -34,7 +34,7 @@ public class UserController {
             method = RequestMethod.PUT,
             consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public ResponseEntity<Object> joinFlat(FlatDTO flatDTO){
+    public ResponseEntity<Object> joinFlat(@RequestBody FlatDTO flatDTO){
             try{
                 userService.joinFlat(flatDTO);
                 return ResponseEntity.ok().build();
