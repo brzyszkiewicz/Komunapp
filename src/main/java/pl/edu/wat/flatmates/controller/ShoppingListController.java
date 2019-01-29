@@ -5,6 +5,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.edu.wat.flatmates.beans.Shoppinglist;
+import pl.edu.wat.flatmates.dto.ShoppingListDto;
 import pl.edu.wat.flatmates.service.ShoppingListService;
 
 import java.util.List;
@@ -26,5 +27,18 @@ public class ShoppingListController {
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.ok(lists);
+    }
+
+    @RequestMapping(path = "/shoppingList",
+            method = RequestMethod.POST,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public ResponseEntity createShoppingList(@RequestBody ShoppingListDto shoppingListDto){
+        try {
+            shoppingListService.createShoppingList(shoppingListDto);
+        } catch (Exception e) {
+            ResponseEntity.badRequest().build();
+        }
+        return ResponseEntity.ok().build();
     }
 }
