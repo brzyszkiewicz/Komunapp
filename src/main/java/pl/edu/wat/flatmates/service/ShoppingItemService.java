@@ -22,7 +22,7 @@ public class ShoppingItemService {
 
     public void createItem(ItemDTO item){
 
-        Shoppinglist shoppingList = shoppingListRepository.getOne(item.getFlatId());
+        Shoppinglist shoppingList = shoppingListRepository.getOne(item.getListId());
 
         Shoppingitem shoppingitem  = new Shoppingitem();
 

@@ -13,16 +13,16 @@ public class ItemDTO {
 
     private String description;
     private double price;
-    private Integer flatId;
+    private Integer listId;
 
     @JsonPOJOBuilder(withPrefix = "")
     public static class ItemDTOBuilder {
     }
 
     @Builder
-    public ItemDTO (String description, double price, Integer flatId){
+    public ItemDTO (String description, double price, Integer listId){
         this.description = description;
         this.price = price;
-        this.flatId = flatId;
+        this.listId = listId;
     }
 }
