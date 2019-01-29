@@ -17,13 +17,13 @@ public class ShoppingListController {
     ShoppingListService shoppingListService;
 
     @RequestMapping(path = "/shoppingList",
-                    method = RequestMethod.GET,
-                    produces = MediaType.APPLICATION_JSON_VALUE)
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public ResponseEntity<List<Shoppinglist>> getShoppingLists(){
+    public ResponseEntity<List<Shoppinglist>> getShoppingLists() {
         List<Shoppinglist> lists = shoppingListService.getFlatShoppingLists();
 
-        if(lists.isEmpty()){
+        if (lists.isEmpty()) {
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.ok(lists);
@@ -33,12 +33,23 @@ public class ShoppingListController {
             method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public ResponseEntity createShoppingList(@RequestBody ShoppingListDto shoppingListDto){
+    public ResponseEntity createShoppingList(@RequestBody ShoppingListDto shoppingListDto) {
         try {
             shoppingListService.createShoppingList(shoppingListDto);
         } catch (Exception e) {
             ResponseEntity.badRequest().build();
         }
+        return ResponseEntity.ok().build();
+    }
+
+    @RequestMapping(path = "/shoppingList/{shoppingListId}",
+            method = RequestMethod.DELETE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public ResponseEntity deleteShoppingList(@PathVariable Integer shoppingListId) {
+
+        shoppingListService.deleteShoppingList(shoppingListId);
+
         return ResponseEntity.ok().build();
     }
 }
