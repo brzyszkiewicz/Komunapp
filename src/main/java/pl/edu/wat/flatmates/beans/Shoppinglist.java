@@ -46,6 +46,7 @@ public class Shoppinglist implements Serializable {
     private Flat flatid;
     @JoinColumn(name = "userid", referencedColumnName = "userid")
     @ManyToOne
+    @JsonIgnore
     private User userid;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "shoppinglistid")
     @JsonIgnore
