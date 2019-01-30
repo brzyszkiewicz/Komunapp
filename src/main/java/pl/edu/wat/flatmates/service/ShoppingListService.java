@@ -10,10 +10,8 @@ import pl.edu.wat.flatmates.repository.ShoppingItemRepository;
 import pl.edu.wat.flatmates.repository.ShoppingListRepository;
 import pl.edu.wat.flatmates.utils.UserUtils;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ShoppingListService {
@@ -28,12 +26,12 @@ public class ShoppingListService {
     UserUtils userUtils;
 
     public List<Shoppinglist> getFlatShoppingLists(){
-        List<Shoppinglist> lists = new ArrayList<>();
+        List<Shoppinglist> lists;
         Integer flatId;
 
         flatId = userUtils.getCurrentUser().getFlatid().getFlatid();
 
-        lists = listRepository.findByFlatid(flatId);
+        lists = listRepository.findByFlatidFlatid(flatId);
 
         return lists;
     }

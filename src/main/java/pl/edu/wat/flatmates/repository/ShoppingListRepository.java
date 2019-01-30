@@ -9,6 +9,6 @@ import java.util.List;
 @Repository
 public interface ShoppingListRepository extends JpaRepository<Shoppinglist, Integer> {
 
-    List<Shoppinglist> findByFlatid(Integer flatId);
+    List<Shoppinglist> findByFlatidFlatid(Integer flatId);
 
 }
