@@ -50,4 +50,11 @@ public class FlatService {
             throw new IllegalArgumentException("Details object is null");
 
     }
+
+    public Integer getFlatId(){
+        if(userUtils.getCurrentUser().getFlatid() == null){
+            return null;
+        }
+        return userUtils.getCurrentUser().getFlatid().getFlatid();
+    }
 }
