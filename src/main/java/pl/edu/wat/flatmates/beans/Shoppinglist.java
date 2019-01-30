@@ -5,6 +5,8 @@
  */
 package pl.edu.wat.flatmates.beans;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -45,6 +47,7 @@ public class Shoppinglist implements Serializable {
     @ManyToOne
     private User userid;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "shoppinglistid")
+    @JsonIgnore
     private Collection<Shoppingitem> shoppingitemCollection;
 
     public Shoppinglist() {
