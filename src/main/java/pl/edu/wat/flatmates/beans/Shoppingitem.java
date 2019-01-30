@@ -5,6 +5,8 @@
  */
 package pl.edu.wat.flatmates.beans;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -38,6 +40,7 @@ public class Shoppingitem implements Serializable {
     private double price;
     @JoinColumn(name = "shoppinglistid", referencedColumnName = "shoppinglistid")
     @ManyToOne(optional = false)
+    @JsonIgnore
     private Shoppinglist shoppinglistid;
 
     public Shoppingitem() {
