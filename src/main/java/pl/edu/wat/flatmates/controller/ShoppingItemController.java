@@ -5,6 +5,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.edu.wat.flatmates.beans.Shoppingitem;
+import pl.edu.wat.flatmates.dto.IdDto;
 import pl.edu.wat.flatmates.dto.ItemDTO;
 import pl.edu.wat.flatmates.service.ShoppingItemService;
 
@@ -22,9 +23,9 @@ public class ShoppingItemController {
             consumes = MediaType.APPLICATION_JSON_VALUE
     )
     @ResponseBody
-    public ResponseEntity createShoppingItem(@RequestBody ItemDTO item){
-        shoppingItemService.createItem(item);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<IdDto> createShoppingItem(@RequestBody ItemDTO item){
+        IdDto result = shoppingItemService.createItem(item);
+        return ResponseEntity.ok(result);
     }
 
     @RequestMapping(

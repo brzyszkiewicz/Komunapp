@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import pl.edu.wat.flatmates.beans.Flat;
 import pl.edu.wat.flatmates.beans.Shoppingitem;
 import pl.edu.wat.flatmates.beans.Shoppinglist;
+import pl.edu.wat.flatmates.dto.IdDto;
 import pl.edu.wat.flatmates.dto.ItemDTO;
 import pl.edu.wat.flatmates.repository.ShoppingItemRepository;
 import pl.edu.wat.flatmates.repository.ShoppingListRepository;
@@ -20,7 +21,7 @@ public class ShoppingItemService {
     @Autowired
     private ShoppingListRepository shoppingListRepository;
 
-    public void createItem(ItemDTO item){
+    public IdDto createItem(ItemDTO item){
 
         Shoppinglist shoppingList = shoppingListRepository.getOne(item.getListId());
 
@@ -30,7 +31,9 @@ public class ShoppingItemService {
         shoppingitem.setPrice(item.getPrice());
         shoppingitem.setShoppinglistid(shoppingList);
 
-        shoppingItemRepository.save(shoppingitem);
+        shoppingitem = shoppingItemRepository.save(shoppingitem);
+
+        return new IdDto(shoppingitem.getShoppingitemid());
     }
 
     public List<Shoppingitem> getShoppingListItems(Integer shoppingListId){

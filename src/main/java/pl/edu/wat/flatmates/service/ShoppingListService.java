@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.edu.wat.flatmates.beans.Shoppingitem;
 import pl.edu.wat.flatmates.beans.Shoppinglist;
+import pl.edu.wat.flatmates.dto.IdDto;
 import pl.edu.wat.flatmates.dto.ShoppingListDto;
 import pl.edu.wat.flatmates.repository.ShoppingItemRepository;
 import pl.edu.wat.flatmates.repository.ShoppingListRepository;
@@ -37,7 +38,7 @@ public class ShoppingListService {
         return lists;
     }
 
-    public void createShoppingList(ShoppingListDto shoppingListDto) throws Exception {
+    public IdDto createShoppingList(ShoppingListDto shoppingListDto) throws Exception {
         Shoppinglist shoppinglist = new Shoppinglist();
 
         if(shoppingListDto != null || !shoppingListDto.getDescription().isEmpty()) {
@@ -46,7 +47,8 @@ public class ShoppingListService {
             shoppinglist.setCreatedate(Calendar.getInstance().getTime());
             shoppinglist.setDescription(shoppingListDto.getDescription());
             shoppinglist.setUserid(userUtils.getCurrentUser());
-            listRepository.save(shoppinglist);
+            shoppinglist = listRepository.save(shoppinglist);
+            return new IdDto(shoppinglist.getShoppinglistid());
         } else
             throw new Exception("Shopping list description is empty!");
 
