@@ -42,6 +42,7 @@ public class Shoppinglist implements Serializable {
     private Date createdate;
     @JoinColumn(name = "flatid", referencedColumnName = "flatid")
     @ManyToOne
+    @JsonIgnore
     private Flat flatid;
     @JoinColumn(name = "userid", referencedColumnName = "userid")
     @ManyToOne
