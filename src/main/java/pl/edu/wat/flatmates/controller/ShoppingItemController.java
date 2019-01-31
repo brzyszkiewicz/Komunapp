@@ -39,4 +39,20 @@ public class ShoppingItemController {
 
         return ResponseEntity.ok(list);
     }
+
+    @RequestMapping(
+            path = "/items/{shoppingItemId}",
+            method = RequestMethod.DELETE
+    )
+    @ResponseBody
+    public ResponseEntity deleteShoppingList(@PathVariable Integer shoppingItemId){
+        try{
+            shoppingItemService.deleteItem(shoppingItemId);
+        } catch (Exception e){
+            return ResponseEntity.badRequest().build();
+        }
+        return ResponseEntity.ok().build();
+    }
+
+
 }

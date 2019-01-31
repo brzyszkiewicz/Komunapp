@@ -45,5 +45,10 @@ public class ShoppingItemService {
         return items;
     }
 
+    public void deleteItem(Integer id){
+        Shoppingitem shoppingitem = shoppingItemRepository.getOne(id);
+        shoppingItemRepository.delete(shoppingitem);
+    }
+
 
 }
